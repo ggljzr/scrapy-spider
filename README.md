@@ -66,7 +66,7 @@ This will start crawling listed products, while saving data in ``alza.json``. No
 
 ## Example
 
-You can see example of gathered data (containing 14592 unique products) [here](https://raw.githubusercontent.com/ggljzr/scrapy-spider/master/examples/alza.json)
+You can see example of gathered data (containing 14592 unique products) [here](https://raw.githubusercontent.com/ggljzr/scrapy-spider/master/examples/alza.json).
 
 # Implementation details
 
