@@ -16,7 +16,7 @@ Alza is a huge e-shop that deals mostly in electronics and digital media (videog
 
 Scrapy can export extracted data in a number of [formats](https://doc.scrapy.org/en/latest/topics/feed-exports.html). Example of product's record in json would look like this:
 
-``
+```javascript
 {
 	"price": "249", 
 	"warranty": "24", 
@@ -30,4 +30,4 @@ Scrapy can export extracted data in a number of [formats](https://doc.scrapy.org
 	"users_rated": "214", 
 	"name": "Hama Lenspen", 
 	"rating": "4,5"}
-``
+```
