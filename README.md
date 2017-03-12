@@ -35,6 +35,10 @@ Scrapy can export extracted data in a number of [formats](https://doc.scrapy.org
 }
 ```
 
+## Crawling policies
+
+Alza provides [robots.txt](https://www.alza.cz/robots.txt) file describing how should crawlers process the site. Scrapy respects policies specified in this file by default (variable ``ROBOTSTXT_OBEY`` is set to ``True`` in ``settings.py``).
+
 ## Configuration
 
 Scrapy crawlers can be configured via ``settings.py`` file. Here you can set things like ``user-agent`` string, request delays or ``robots.txt`` compliance.
@@ -64,7 +68,7 @@ This will start crawling listed products, while saving data in ``alza.json``. No
 
 ## Basic mechanism
 
-Since Alza [has](https://alza.cz/robots.txt) sitemaps in its ``robots.txt`` file, we can use those instead of crawling site itself for links. Sitemap for products looks like this:
+Since Alza [has](https://www.alza.cz/robots.txt) sitemaps in its ``robots.txt`` file, we can use those instead of crawling site itself for links. Sitemap for products looks like this:
 
 ```xml
 <urlset>
@@ -89,6 +93,28 @@ class AlzaSpider(SitemapSpider):
     name = 'alza'
 
     sitemap_urls = ['https://www.alza.cz/_sitemap-products-1.xml']
+    ...
 
 ```
 
+## Data extraction
+
+Data from product page are extracted using CSS selectors. For example extracting product name could look like this:
+
+```python
+
+	#response is an object providet by Scrapy
+	#containing response to crawler's request
+	name = response.css('div#popis h2::text').extract_first()
+
+```
+
+It seems that layout for each page can slightly differ, depending on various factors (product being on sale etc.), so it was necessary to identify and handle these differences.
+
+Another problem with extraction was that some of the content (for example links to related products) on product page was lazy loaded with Javascript, so it was missing from ``response`` to crawler's request.
+
+This did not matter much, since crawler was able to get enough information from loaded content and links to crawl were provided by sitemap.
+
+# Future improvements
+
+It would be nice to be able to crawl lazy loaded content. [One](http://stackoverflow.com/questions/40738264/how-to-scrapy-a-lazy-loading-form) of the ways to do this is to use Scrapy with headless browser like [PhantomJS](http://phantomjs.org/) to do the Javascript rendering.
