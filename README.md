@@ -1,6 +1,6 @@
 # scrapy-spider
 
-This web crawler is designed to extract product information from a popular Czech e-shop [Alza](www.alza.cz). As the name suggests, [scrapy](https://scrapy.org/) framework was used to implement the crawler.
+This web crawler is designed to extract product information from a popular Czech e-shop [Alza](https://www.alza.cz). As the name suggests, [scrapy](https://scrapy.org/) framework was used to implement the crawler.
 
 This crawler was implemented as a part of web datamining course at [CTU Prague](https://www.cvut.cz/en)
 
