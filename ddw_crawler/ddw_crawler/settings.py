@@ -14,15 +14,16 @@ BOT_NAME = 'ddw_crawler'
 SPIDER_MODULES = ['ddw_crawler.spiders']
 NEWSPIDER_MODULE = 'ddw_crawler.spiders'
 
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'ddw_crawler (+http://www.yourdomain.com)'
+USER_AGENT = 'ddw_crawler (https://github.com/ggljzr/scrapy-spider)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
+
+FEED_EXPORT_ENCODING = 'utf-8'
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
