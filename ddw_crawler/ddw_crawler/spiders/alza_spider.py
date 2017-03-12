@@ -17,7 +17,6 @@ class AlzaSpider(SitemapSpider):
             name = response.css('div#h1cdetail h1::text').extract_first()
             name = name.strip()
 
-
         try:
             text_desc = response.css('div#detailText div.nameextc span::text')
             text_desc = text_desc.extract_first().strip()
@@ -41,7 +40,7 @@ class AlzaSpider(SitemapSpider):
         try:
             price = response.css('tr.pricenormal td.c2 span::text').extract()[-1]
         except IndexError:
-            price = response.css('div#pricec div.colValue span::text').extract_first()
+            price = response.css('div#pricec div.colValue span.bigPrice::text').extract_first()
 
         if price is not None:
             price = re.sub(r'[\s+,-]', '', price)
@@ -53,11 +52,14 @@ class AlzaSpider(SitemapSpider):
         except AttributeError:
             warranty = 'none'
 
+        categories = response.css('div.breadCrupmps a::text').extract()[:-1]
+
         yield {
             'name' : name,
             'text_desc' : text_desc,
             'rating' : rating,
             'users_rated' : users_rated,
             'price' : price,
-            'warranty' : warranty 
+            'warranty' : warranty,
+            'categories' : categories
         }
