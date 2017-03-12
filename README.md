@@ -64,6 +64,10 @@ $ scrapy crawl alza -o alza.json
 
 This will start crawling listed products, while saving data in ``alza.json``. Note that ``alza.json`` file is not overwriten. Instead data from each crawl are appended to the file (so you may want to delete this file before running a new crawl).
 
+## Example
+
+You can see example of gathered data (containing 14592 unique products) [here](https://raw.githubusercontent.com/ggljzr/scrapy-spider/master/examples/alza.json)
+
 # Implementation details
 
 ## Basic mechanism
